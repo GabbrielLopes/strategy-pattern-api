@@ -19,8 +19,12 @@ public class ReadFileServiceImpl implements ReadFileService {
     @Override
     public List<VehicleDataFileDTO> readFile(String file) {
 
-        String formatFile = file.substring(file.lastIndexOf("."));
+        String formatFile = getFormatFile(file);
 
         return readFileFactory.getStrategy(formatFile).readFile(file);
+    }
+
+    private String getFormatFile(String file) {
+        return file.substring(file.lastIndexOf(".") + 1);
     }
 }
