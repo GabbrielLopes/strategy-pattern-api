@@ -18,7 +18,6 @@ public class ReadFileServiceImpl implements ReadFileService {
 
     @Override
     public List<VehicleDataFileDTO> readFile(String file) {
-
         String formatFile = getFormatFile(file);
 
         return readFileFactory.getStrategy(formatFile).readFile(file);
